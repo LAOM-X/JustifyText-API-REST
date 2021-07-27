@@ -1,0 +1,22 @@
+{
+  "name": "justify-restapi",
+  "version": "1.0.0",
+  "description": "Api for justify text",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "rest",
+    "api",
+    "justify",
+    "http",
+    "server"
+  ],
+  "author": "Marvin Likefack",
+  "license": "ISC",
+  "dependencies": {
+    "Express": "^3.0.1"
+  }
+}
