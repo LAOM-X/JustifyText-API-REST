@@ -15,15 +15,17 @@ server.get('/',function (req,res){
 
 });
 
-//launch server
-server.listen(8080, function(){
-    console.log('Server en écoute ;)')
-});
+// //launch server
+// server.listen(8080, function(){
+//     console.log('Server en écoute ;)')
+// });
 
 
 
 // At the bottom of app.js or server.js
 const port = process.env.PORT || 3000;
-server.listen(port);
+server.listen(port, function(){
+        console.log('Server en écoute ;)')
+     });
 // the code above should be directly above: 'module.exports = app;'
 //module.exports = server;
