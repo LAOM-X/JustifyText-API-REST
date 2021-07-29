@@ -1,31 +1,30 @@
-// app.js or server.js
-require('dotenv').config()
+
+const express = require('express');
+const server = express();
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+//import Routes
+const authRoute = require('./Routes/auth')
+dotenv.config();
 
 
 
-var express = require('express');
-
-var server = express();
-
-//configure routes
-server.get('/',function (req,res){
-    res.setHeader('Content-Type', 'text/html');
-    res.status(200).send('<h1>Bonjour sur mon super serveur</h1>')
-
-
+//connect to DB
+mongoose.connect(process.env.DB_CONNECT,
+    { useNewUrlParser: true },
+()=>{
+    console.log('connected to DB')
 });
 
-// //launch server
-// server.listen(8080, function(){
-//     console.log('Server en écoute ;)')
-// });
+
+//Middleware
+//server.use(bodyParser.json());
+server.use(express.json());
+//Route Middlewares
+server.use('/api/user',authRoute);
 
 
-
-// At the bottom of app.js or server.js
-const port = process.env.PORT || 3000;
-server.listen(port, function(){
-        console.log('Server en écoute ;)')
-     });
-// the code above should be directly above: 'module.exports = app;'
-//module.exports = server;
+server.listen(8080, function(){
+        console.log('Server up and running ;)');
+ });
