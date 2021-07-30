@@ -5,7 +5,8 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 //import Routes
-const authRoute = require('./Routes/auth')
+const authRoute = require('./Routes/auth');
+const postRoute = require('./Routes/posts');
 dotenv.config();
 
 
@@ -13,18 +14,19 @@ dotenv.config();
 //connect to DB
 mongoose.connect(process.env.DB_CONNECT,
     { useNewUrlParser: true },
-()=>{
-    console.log('connected to DB')
-});
+    () => {
+        console.log('connected to DB')
+    });
 
 
 //Middleware
 //server.use(bodyParser.json());
 server.use(express.json());
 //Route Middlewares
-server.use('/api/user',authRoute);
+server.use('/api/user', authRoute);
+server.use('/api/posts', postRoute);
 
 
-server.listen(8080, function(){
-        console.log('Server up and running ;)');
- });
+server.listen(8080, function () {
+    console.log('Server up and running ;)');
+});
