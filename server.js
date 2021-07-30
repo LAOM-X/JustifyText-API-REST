@@ -11,12 +11,14 @@ dotenv.config();
 
 
 
-//connect to DB
-mongoose.connect(process.env.DB_CONNECT,
-    { useNewUrlParser: true },
-    () => {
-        console.log('connected to DB')
-    });
+
+mongoose.connect(process.env.DB_CONNECT, {useNewUrlParser: true, useUnifiedTopology: true});
+
+//Get the default connection
+var db = mongoose.connection;
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 //Middleware
