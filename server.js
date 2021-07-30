@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 //import Routes
 const authRoute = require('./Routes/auth');
 const postRoute = require('./Routes/posts');
+const justifyRoute = require('./Routes/justify');
 dotenv.config();
 
 
@@ -27,6 +28,7 @@ server.use(express.json());
 //Route Middlewares
 server.use('/api/user', authRoute);
 server.use('/api/posts', postRoute);
+server.use('/api/justify', justifyRoute);
 
 
 server.listen(process.env.PORT || 3000, function () {
