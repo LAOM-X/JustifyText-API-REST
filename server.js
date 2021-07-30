@@ -27,6 +27,6 @@ server.use('/api/user', authRoute);
 server.use('/api/posts', postRoute);
 
 
-server.listen(8080, function () {
+server.listen(process.env.PORT || 3000, function () {
     console.log('Server up and running ;)');
 });
