@@ -3,11 +3,9 @@ const express = require('express');
 const server = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 //import Routes
-const authRoute = require('./Routes/auth');
-const postRoute = require('./Routes/posts');
-const justifyRoute = require('./Routes/justify');
+const authRoute = require('./routes/auth');
+const justifyRoute = require('./routes/justify');
 dotenv.config();
 
 
@@ -22,12 +20,9 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
-//Middleware
-//server.use(bodyParser.json());
-server.use(express.json());
+
 //Route Middlewares
 server.use('/api/user', authRoute);
-server.use('/api/posts', postRoute);
 server.use('/api/justify', justifyRoute);
 
 

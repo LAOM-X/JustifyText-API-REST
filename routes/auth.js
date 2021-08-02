@@ -1,11 +1,12 @@
 const router = require('express').Router();
+const express = require('express');
 const User = require('../model/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { registerValidation, loginValidation } = require('../validation');
 
 
-
+router.use(express.json());
 router.post('/register', async (req, res) => {
     //validate data before
     const { error } = registerValidation(req.body);
@@ -23,7 +24,6 @@ router.post('/register', async (req, res) => {
 
     //create new user
     const user = new User({
-        name: req.body.name,
         email: req.body.email,
         password: hashedPassword
     });
@@ -35,7 +35,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.post('/login', async (req, res) => {
+router.post('/token', async (req, res) => {
     //validate data before
     const { error } = loginValidation(req.body);
     if (error)
