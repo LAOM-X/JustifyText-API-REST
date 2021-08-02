@@ -22,10 +22,12 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 //Route Middlewares
-server.use('/api/user', authRoute);
+server.use('/api/', authRoute);
 server.use('/api/justify', justifyRoute);
 
-
+server.get('/',function (req,res) {
+    res.status(200).send('Veuillez consulter le fichier readme');
+})
 server.listen(process.env.PORT || 3000, function () {
     console.log('Server up and running ;)');
 });
