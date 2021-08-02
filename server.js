@@ -28,6 +28,6 @@ server.use('/api/justify', justifyRoute);
 server.get('/',function (req,res) {
     res.status(200).send('Veuillez consulter le fichier readme');
 })
-server.listen(process.env.PORT || 3000, function () {
+server.listen(process.env.PORT , function () {
     console.log('Server up and running ;)');
 });
